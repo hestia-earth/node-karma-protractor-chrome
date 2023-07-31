@@ -1,2 +1,2 @@
 # node-karma-protractor-chrome
-Node 14, NPM 7, Karma, Protractor, Chrome
+Node 16.20.1, NPM 8.19.4, Karma, Protractor, Chrome
