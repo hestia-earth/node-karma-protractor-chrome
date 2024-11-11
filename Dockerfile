@@ -1,5 +1,16 @@
-FROM weboaks/node-karma-protractor-chrome
+FROM node:20-buster
 
-# install latest version of NodeJS 20
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
+RUN apt-get update && \
+    DEBIAN_FRONTEND="noninteractive" \
+    apt-get install -y --no-install-recommends \
+    chromium \
+    chromium-driver \
+    libatk-bridge2.0-0 \
+    libgconf-2-4 \
+    libxss1 \
+    openjdk-11-jre-headless \
+    && rm -rf /var/lib/apt/lists/*
+
+USER node
+
+ENV CHROME_BIN /usr/bin/chromium
